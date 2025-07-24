@@ -18,8 +18,8 @@ import io.qameta.allure.Story;
 @Epic("GCloud Storage CLI")
 @Feature("List Command")
 public class BucketsListCommandTest extends BaseGcloudTest {
-
-    private final String testBucketName = "mend-test-466";;
+    // Whatever bucket name you want to use for testing
+    private final String testBucketName = "mend-test-466";
     private final GcloudStorageOperations storageOps = new GcloudStorageOperations();
     private final String testLocation = "US";
 

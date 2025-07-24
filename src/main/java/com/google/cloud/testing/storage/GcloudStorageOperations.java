@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.cloud.testing.config.TestConfig;
 import com.google.cloud.testing.core.CommandExecutor;
 import com.google.cloud.testing.core.CommandResult;
 
@@ -20,6 +21,7 @@ public class GcloudStorageOperations {
 
     private static final Logger logger = LoggerFactory.getLogger(GcloudStorageOperations.class);
     private final CommandExecutor executor;
+    protected TestConfig config = TestConfig.getInstance();
 
     public GcloudStorageOperations() {
         this.executor = new CommandExecutor();
@@ -40,7 +42,7 @@ public class GcloudStorageOperations {
     }
 
     /**
-     * Delete a bucket (must be empty)
+     * Delete a bucket
      */
     public CommandResult deleteBucket(String bucketName) {
         if(bucketName == null || bucketName.isEmpty()) {
@@ -113,7 +115,7 @@ public class GcloudStorageOperations {
         args.add("sign-url");
         args.add(fileUrlString);
         args.add("--duration=" + duration.toSeconds() + "s");
-        args.add("--impersonate-service-account=mend-667@mend-466717.iam.gserviceaccount.com");
+        args.add("--impersonate-service-account=" + config.getGcloud().getServiceAccount());
         args.add("--format=json");
 
         CommandResult result = executor.executeGcloudCommand(

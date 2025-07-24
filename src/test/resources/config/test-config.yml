@@ -3,6 +3,7 @@
 gcloud:
   # This can be overridden by environment variables
   executable_path: "/Users/ydubinin/google-cloud-sdk/bin/gcloud"
+  service_account: "mend-667@mend-466717.iam.gserviceaccount.com"
 
 test:
   report_generation: true

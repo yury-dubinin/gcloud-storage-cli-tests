@@ -90,12 +90,19 @@ public class TestConfig {
         @JsonProperty("executable_path")
         private String executablePath;
 
+        @JsonProperty("service_account")
+        private String serviceAccount;
+
         public String getExecutablePath() {
             return executablePath;
         }
 
         public void setExecutablePath(String executablePath) {
             this.executablePath = executablePath;
+        }
+
+        public String getServiceAccount() {
+            return serviceAccount;
         }
     }
 
