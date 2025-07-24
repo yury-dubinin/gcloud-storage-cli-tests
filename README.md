@@ -15,7 +15,7 @@ A comprehensive automated testing framework for Google Cloud Storage CLI command
 - **Java 21** or higher
 - **Maven 3.6+**
 - **Google Cloud CLI** (`gcloud`) installed and configured
-- **Google Cloud Project** with IAM setup and service acount
+- **Google Cloud Project with IAM setup and service acount**
 
 ### Authentication Setup
 ```bash
