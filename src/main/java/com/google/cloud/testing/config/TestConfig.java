@@ -12,10 +12,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 /**
- * Configuration manager for test framework
- * Handles loading configuration from YAML files and environment variables
+ * Configuration manager for test framework Handles loading configuration from
+ * YAML files and environment variables
  */
 public class TestConfig {
+
     private static final Logger logger = LoggerFactory.getLogger(TestConfig.class);
     private static TestConfig instance;
     private static final Object lock = new Object();
@@ -42,7 +43,7 @@ public class TestConfig {
     private static TestConfig loadConfiguration() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         TestConfig config = new TestConfig();
-        
+
         // Load from resources first
         try (InputStream is = TestConfig.class.getResourceAsStream("/config/test-config.yml")) {
             if (is != null) {
@@ -76,27 +77,30 @@ public class TestConfig {
         }
     }
 
-    // Getters
-    public GcloudConfig getGcloud() { return gcloudConfig; }
-    public TestSettings getTest() { return testSettings; }
+    public GcloudConfig getGcloud() {
+        return gcloudConfig;
+    }
+
+    public TestSettings getTest() {
+        return testSettings;
+    }
 
     public static class GcloudConfig {
+
         @JsonProperty("executable_path")
         private String executablePath;
 
-        @JsonProperty("timeout_seconds")
-        private int timeoutSeconds = 120;
+        public String getExecutablePath() {
+            return executablePath;
+        }
 
-        // Getters and setters
-        public String getExecutablePath() { return executablePath; }
-        public void setExecutablePath(String executablePath) { this.executablePath = executablePath; }
-        public int getTimeoutSeconds() { return timeoutSeconds; }
-        public void setTimeoutSeconds(int timeoutSeconds) { this.timeoutSeconds = timeoutSeconds; }
+        public void setExecutablePath(String executablePath) {
+            this.executablePath = executablePath;
+        }
     }
 
     public static class TestSettings {
-        @JsonProperty("parallel_threads")
-        private int parallelThreads = 4;
+
 
         @JsonProperty("report_generation")
         private boolean reportGeneration = true;
@@ -104,12 +108,20 @@ public class TestConfig {
         @JsonProperty("log_level")
         private String logLevel = "INFO";
 
-        // Getters and setters
-        public int getParallelThreads() { return parallelThreads; }
-        public void setParallelThreads(int parallelThreads) { this.parallelThreads = parallelThreads; }
-        public boolean isReportGeneration() { return reportGeneration; }
-        public void setReportGeneration(boolean reportGeneration) { this.reportGeneration = reportGeneration; }
-        public String getLogLevel() { return logLevel; }
-        public void setLogLevel(String logLevel) { this.logLevel = logLevel; }
+        public boolean isReportGeneration() {
+            return reportGeneration;
+        }
+
+        public void setReportGeneration(boolean reportGeneration) {
+            this.reportGeneration = reportGeneration;
+        }
+
+        public String getLogLevel() {
+            return logLevel;
+        }
+
+        public void setLogLevel(String logLevel) {
+            this.logLevel = logLevel;
+        }
     }
 }

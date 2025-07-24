@@ -52,7 +52,6 @@ In order to run tests against specific version of gcloud you need to provide a `
 
 ```bash
 export GCLOUD_PATH="/path/to/gcloud"       # Optional
-export TEST_TIMEOUT="120"                  # Optional
 ```
 
 #### Configuration File
@@ -60,10 +59,8 @@ Edit `src/test/resources/config/test-config.yml`:
 ```yaml
 gcloud:
   executable_path: "gcloud"
-  timeout_seconds: 120
 
 test:
-  parallel_threads: 4
   report_generation: true
   log_level: "INFO"
 ```
