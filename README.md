@@ -126,6 +126,10 @@ mvn allure:serve
 
 <img width="1687" height="656" alt="Screenshot 2025-07-24 at 17 59 19" src="https://github.com/user-attachments/assets/fc5ce3bb-ef5e-4f46-ad9f-ac36be2274df" />
 
+Screenshot from webpage opened from `https://storage.googleapis.com/mend-test-bucket-880165b3-3d5/test-file.txt` added to Allure
+
+<img width="1836" height="705" alt="Screenshot 2025-07-24 at 18 28 45" src="https://github.com/user-attachments/assets/9390445a-a869-4a01-94e1-82e228e439ec" />
+
 
 ### TestNG Reports
 Basic HTML reports are available at:
