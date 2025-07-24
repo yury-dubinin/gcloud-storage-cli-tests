@@ -122,6 +122,9 @@ mvn allure:report
 mvn allure:serve
 ```
 
+<img width="1687" height="656" alt="Screenshot 2025-07-24 at 17 59 19" src="https://github.com/user-attachments/assets/fc5ce3bb-ef5e-4f46-ad9f-ac36be2274df" />
+
+
 ### TestNG Reports
 Basic HTML reports are available at:
 ```
