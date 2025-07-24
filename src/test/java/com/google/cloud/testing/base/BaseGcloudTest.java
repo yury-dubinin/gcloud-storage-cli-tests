@@ -89,6 +89,31 @@ public abstract class BaseGcloudTest {
     }
 
     /**
+     * Attach screenshot to Allure report
+     */
+    protected void attachScreenshotToAllureReport(String name, byte[] screenshot) {
+        if (screenshot != null && screenshot.length > 0) {
+            Allure.addAttachment(name, "image/png", new java.io.ByteArrayInputStream(screenshot), "png");
+        }
+    }
+
+    /**
+     * Attach screenshot from file to Allure report
+     */
+    protected void attachScreenshotFromFileToAllureReport(String name, Path screenshotPath) {
+        try {
+            if (Files.exists(screenshotPath)) {
+                byte[] screenshot = Files.readAllBytes(screenshotPath);
+                attachScreenshotToAllureReport(name, screenshot);
+            } else {
+                logger.warn("Screenshot file not found: {}", screenshotPath);
+            }
+        } catch (IOException e) {
+            logger.error("Failed to read screenshot file: {}", screenshotPath, e);
+        }
+    }
+
+    /**
      * Ensure test bucket exists
      */
     protected void ensureTestBucketExists(String bucketName, String location, GcloudStorageOperations _storageOps) {

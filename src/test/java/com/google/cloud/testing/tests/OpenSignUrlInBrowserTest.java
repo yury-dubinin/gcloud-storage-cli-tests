@@ -3,7 +3,6 @@ package com.google.cloud.testing.tests;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
 
 import org.testng.Assert;
@@ -27,8 +26,8 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
 /**
- * Tests for gcloud storage sign-url command Focus: Validate signed URL in Browser
- * generation and format
+ * Tests for gcloud storage sign-url command Focus: Validate signed URL in
+ * Browser generation and format
  */
 @Epic("GCloud Storage CLI")
 @Feature("Sign URL Command")
@@ -69,7 +68,7 @@ public class OpenSignUrlInBrowserTest extends BaseGcloudTest {
     @Story("Basic signed URL generation")
     @Description("Test basic signed URL generation for different file types")
     @Severity(SeverityLevel.CRITICAL)
-    public void testBasicSignedUrlGeneration() {
+    public void testSignedUrlInBrowser() {
         logger.info("Testing basic signed URL generation");
 
         Duration duration = Duration.ofHours(1);
@@ -99,7 +98,8 @@ public class OpenSignUrlInBrowserTest extends BaseGcloudTest {
             page.navigate(result.signed_url());
             boolean isVisible = page.getByText("This is a test file for GCloud Storage CLI testing.").isVisible();
             Assert.assertTrue(isVisible, "The content of the test file should be visible in the browser");
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("signed_url.png")));
+            var screenshot = page.screenshot();
+            attachScreenshotToAllureReport("Signed URL Screenshot", screenshot);
         } catch (Exception e) {
             logger.error("Failed to open signed URL in browser", e);
             Assert.fail("Could not open signed URL in browser: " + e.getMessage());

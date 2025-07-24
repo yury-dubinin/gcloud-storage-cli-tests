@@ -64,6 +64,9 @@
 
             <!-- Upload Tests -->
             <class name="com.google.cloud.testing.tests.UploadCommandTest"/>
+
+            <!-- Open Sign URL in Browser Test -->
+            <class name="com.google.cloud.testing.tests.OpenSignUrlInBrowserTest"/>
         </classes>
     </test>
     
