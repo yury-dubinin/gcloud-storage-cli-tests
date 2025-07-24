@@ -1,0 +1,11 @@
+# GCloud Storage CLI Test Configuration
+
+gcloud:
+  # This can be overridden by environment variables
+  executable_path: "/Users/ydubinin/google-cloud-sdk/bin/gcloud"
+  timeout_seconds: 120
+
+test:
+  parallel_threads: 4
+  report_generation: true
+  log_level: "INFO"

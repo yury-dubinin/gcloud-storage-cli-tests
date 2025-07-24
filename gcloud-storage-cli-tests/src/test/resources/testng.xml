@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="GCloudStorageCLITestSuite" parallel="classes" thread-count="1">
+    
+    <parameter name="test.id" value="suite-run"/>
+    
+    <!-- Listeners for enhanced reporting -->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    
+    <!-- Test groups definitions -->
+    <test name="CriticalTests" group-by-instances="true">
+        <groups>
+            <run>
+                <include name="critical"/>
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.google.cloud.testing.tests.BucketsCreateCommandTest">
+                <methods>
+                    <include name="testCreateBucket"/>
+                </methods>
+            </class>
+            <class name="com.google.cloud.testing.tests.BucketsDeleteCommandTest">
+                <methods>
+                    <include name="testDeleteBucket"/>
+                </methods>
+            </class>
+            <class name="com.google.cloud.testing.tests.BucketsListCommandTest">
+                <methods>
+                    <include name="testListBuckets"/>
+                </methods>
+            </class>
+            <class name="com.google.cloud.testing.tests.UploadCommandTest">
+                <methods>
+                    <include name="testUploadFile"/>
+                </methods>
+            </class>
+            <class name="com.google.cloud.testing.tests.SignUrlCommandTest">
+                <methods>
+                    <include name="testBasicSignedUrlGeneration"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- Full test suite -->
+    <test name="FullTestSuite" group-by-instances="true">
+        <classes>
+            <!-- Sign URL Tests (Critical for phishing detection) -->
+            <class name="com.google.cloud.testing.tests.SignUrlCommandTest"/>
+            
+            <!-- List Tests -->
+            <class name="com.google.cloud.testing.tests.BucketsListCommandTest"/>
+
+            <!-- Create Tests -->
+            <class name="com.google.cloud.testing.tests.BucketsCreateCommandTest"/>
+
+            <!-- Delete Tests -->
+            <class name="com.google.cloud.testing.tests.BucketsDeleteCommandTest"/>
+
+            <!-- Upload Tests -->
+            <class name="com.google.cloud.testing.tests.UploadCommandTest"/>
+        </classes>
+    </test>
+    
+</suite>
